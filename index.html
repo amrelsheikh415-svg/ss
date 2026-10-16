@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>تيلا الشام | TELLA</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#faf6ee;--card:#fff;--ink:#14233a;--mut:#5d6b80;--line:#e6dccb;--acc:#e07b16;--grn:#5f9b2d}
+:root[data-theme="dark"]{--bg:#0e1b2c;--card:#162840;--ink:#f4efe6;--mut:#a9b4c4;--line:#243a58;--acc:#f28c28;--grn:#7cb342}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0e1b2c;--card:#162840;--ink:#f4efe6;--mut:#a9b4c4;--line:#243a58;--acc:#f28c28;--grn:#7cb342}}
+html{scroll-padding-top:110px;scroll-behavior:smooth;color-scheme:light dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Cairo,Tahoma,sans-serif;line-height:1.6}
+button{font:inherit;cursor:pointer;border:0}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:10px 16px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+.logo{font-weight:900;font-size:20px}.logo b{color:var(--acc)}
+.btn{background:var(--acc);color:#fff;padding:8px 16px;border-radius:999px;font-weight:700;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.hero{text-align:center;padding:44px 16px 36px;background:radial-gradient(circle at 50% 0,#f28c2844,transparent 65%)}
+.hero .em{font-size:40px;letter-spacing:8px}
+.hero h1{font-size:clamp(40px,10vw,72px);margin:4px 0 0;font-weight:900}
+.hero h1 b{color:var(--acc);display:block;letter-spacing:6px;font-size:.7em}
+.hero p{color:var(--mut);max-width:520px;margin:12px auto 20px}
+main{max-width:960px;margin:auto;padding:0 14px 120px}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:10px 0;position:sticky;top:calc(env(safe-area-inset-top,0px) + 53px);background:var(--bg);z-index:4}
+.tabs button{white-space:nowrap;background:var(--card);color:var(--ink);padding:7px 14px;border-radius:999px;border:1px solid var(--line)}
+.tabs button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+h2{border-inline-start:4px solid var(--acc);padding-inline-start:10px;margin:26px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.ph{height:150px;display:flex;align-items:center;justify-content:center;font-size:76px;background:linear-gradient(135deg,#f28c2833,#7cb34233)}
+.ph img{width:100%;height:100%;object-fit:cover}
+.cb{padding:12px 14px;display:flex;flex-direction:column;gap:4px;flex:1}
+.cb b{font-size:17px}.cb small{color:var(--mut)}
+.bt{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px}
+.pr{color:var(--acc);font-weight:900;font-size:18px}
+.add{background:var(--grn);color:#fff;padding:6px 16px;border-radius:999px;font-weight:700}
+.note{color:var(--mut);font-size:13px}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:30px}
+.info .card{padding:14px}
+.info h3{margin:0 0 6px;color:var(--acc)}
+.hrs div{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:3px 0}
+footer{text-align:center;color:var(--mut);padding:26px 14px 110px;border-top:1px solid var(--line)}
+footer a,.info a:not(.btn){color:var(--acc);text-decoration:none;font-weight:700}
+#bar{position:fixed;inset-inline:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:6;background:var(--acc);color:#fff;border-radius:16px;padding:12px 16px;display:none;justify-content:space-between;align-items:center;font-weight:700;box-shadow:0 6px 24px #0006;cursor:pointer}
+.modal{position:fixed;inset:0;background:#000a;z-index:20;display:none;align-items:flex-end;justify-content:center}
+.modal.on{display:flex}
+.sheet{background:var(--bg);width:100%;max-width:560px;max-height:92%;overflow:auto;border-radius:20px 20px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom,0px))}
+.sheet input,.sheet textarea,.sheet select{width:100%;padding:10px;margin:5px 0 10px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.row small{display:block;color:var(--mut)}
+.row label{flex:1;display:flex;gap:8px;align-items:center}
+.row input{width:auto;margin:0}
+.qty{white-space:nowrap}
+.qty button{width:30px;height:30px;border-radius:50%;background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.ok{color:var(--grn);font-weight:700}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">تيلا الشام <b>TELLA</b></div>
+  <a class="btn" href="tel:01094327684">📞 اتصل</a>
+</header>
+
+<section class="hero">
+  <div class="em">🌯 🍔 ☕ 🍨</div>
+  <h1>تيلا الشام<b>TELLA</b></h1>
+  <p>سندويشات سورية أصلية، شاورما، برجر، قهوة وآيس كريم. اختر طلبك وأرسله عبر واتساب.</p>
+  <button class="btn" style="padding:12px 28px;font-size:18px" onclick="document.getElementById('menu').scrollIntoView()">شاهد المنيو واطلب</button>
+</section>
+
+<main>
+  <div id="menu"></div>
+  <div class="tabs" id="tabs"></div>
+  <div id="list"></div>
+  <p class="note" id="cnote"></p>
+
+  <section class="info" id="info">
+    <div class="card"><h3>📍 الموقع</h3>
+      <p id="addr"></p>
+      <a class="btn" id="mapbtn" target="_blank" rel="noopener">افتح على الخريطة</a></div>
+    <div class="card hrs"><h3>🕐 ساعات العمل</h3><div id="hours"></div><p class="note">يرجى تأكيد المواعيد من إدارة المطعم.</p></div>
+    <div class="card"><h3>📞 التواصل</h3>
+      <p><a href="tel:01094327684">01094327684</a><br><a href="tel:01010634856">01010634856</a></p>
+      <a class="btn" id="wabtn" target="_blank" rel="noopener">واتساب</a></div>
+  </section>
+</main>
+
+<footer>© تيلا الشام TELLA</footer>
+
+<div id="bar" onclick="openCart()"><span id="bc"></span><span id="bt"></span></div>
+<div class="modal" id="mod" onclick="if(event.target===this)this.classList.remove('on')"><div class="sheet" id="box"></div></div>
+
+<script>
+// ===== إعدادات يسهل تعديلها =====
+const CFG={
+ cur:'ر.س',                      // العملة
+ wa:'201094327684',              // رقم واتساب بالصيغة الدولية (بدون +)
+ address:'مول سيتي بلازا، بجوار الجامعة البريطانية، الدور الأول أعلى سبينس',
+ mapQuery:'مول سيتي بلازا الجامعة البريطانية',
+ hours:[['السبت – الخميس','12:00 ظ – 2:00 ص'],['الجمعة','2:00 ظ – 2:00 ص']]
+};
+// صور: ضع رابط data: أو مسار صورة في الحقل img لأي صنف لعرض صورة حقيقية بدل الأيقونة.
+const EX={ // الإضافات المتاحة
+ s:[["جبنة موزريلا",15],["بطاطس",15],["توميه",5],["مخلل",5],["صوص حار",5]],
+ m:[["بطاطس إضافية",20],["توميه إضافية",10],["خبز محمر إضافي",10],["طحينة",10]]
+};
+// [قسم، أيقونة، مفتاح إضافات، أصناف]
+const MENU=[
+["السندويشات السورية","🥙",null,[["بطاطا سوري",60],["فلافل سوري",60],["مكس فلافل وبطاطا",70],["مكس بطاطا وجبنة",70],["مكس بطاطا ولانشون",70],["هريسة مع جبنة",50],["جبنة وزعتر",50],["مسبحة",50]]],
+["سندويش فراخ ولحم","🌯","s",[["شاورما فراخ",120],["شاورما فراخ مع موزريلا",135],["شاورما لحم",150],["شاورما مكس فراخ ولحم",275],["برجر لحم",150],["برجر فراخ",120],["برغر كريسبي",120],["كفتة",150],["كريسبي",120],["زنجر",120],["لانشون فينو",65],["سجق فينو",65],["كبده فينو",65]]],
+["الوجبات","🍽️","m",[["وجبة شاورما فراخ عربي",185,"مع بطاطس - توميه - مخلل - خبز محمر"],["وجبة شاورما لحم",220,"مع بطاطس وطحينة - مخلل - خبز محمر"],["وجبة كريسبي 3 قطع",200,"مع بطاطا - خبز محمر - توميه - مخلل - كتشب"],["وجبة كريسبي 5 قطع",250,"مع بطاطا - خبز محمر - توميه - مخلل - كتشب"],["وجبة كفتة",200,"مع بطاطا وخبز محمر وتومية ومخلل"],["وجبة كبة 5 قطع",185,"مع بطاطا - خبز محمر - توميه - مخلل - كتشب"],["وجبة مكس شاورما لحم وفراخ",280,"مع بطاطا وخبز محمر - توميه - مخلل - طحينة"],["وجبة مكس تيلا",300,"2ق كفتة + 2ق كبة + 2ق كريسبي + 2ق بورك جبنة"]]],
+["المقبلات","🥟",null,[["كبة",59],["بورك لحم",49],["بورك جبنة",45],["باكيت بطاطس",50],["علبة مسبحة",50],["علبة تومية",15],["علبة مخلل",15]]],
+["الآيس كريم والمشروبات","🍨",null,[["بولة آيس كريم",30],["2 بولة آيس كريم",50],["علبة آيس كريم نص كيلو",250],["رول آيس كريم بالفستق واللبن",300],["عصير سموزي توت",35],["آيس كوفي",75]]],
+["قسم البن (للكيلو)","☕",null,[["بن (فاتح / وسط / غامق) ساده",800],["بن (فاتح / وسط / غامق) محوج",950],["بن خلطة سورية مع هيل",990],["بن خلطة سورية مع هيل اكسترا",1150],["اسبريسو",1200]]]
+];
+const $=id=>document.getElementById(id);
+const P=n=>n+' '+CFG.cur;
+const flat=[];let cart=[];
+
+$('cnote').textContent='الأسعار بالـ'+'ريال السعودي ('+CFG.cur+').';
+$('addr').textContent=CFG.address;
+$('mapbtn').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(CFG.mapQuery);
+$('wabtn').href='https://wa.me/'+CFG.wa;
+$('hours').innerHTML=CFG.hours.map(h=>`<div><span>${h[0]}</span><b>${h[1]}</b></div>`).join('');
+
+$('tabs').innerHTML=MENU.map((c,i)=>`<button onclick="document.getElementById('c${i}').scrollIntoView()">${c[1]} ${c[0]}</button>`).join('');
+$('list').innerHTML=MENU.map((c,i)=>`<h2 id="c${i}">${c[0]}</h2><div class="grid">`+c[3].map(it=>{
+ const id=flat.push({n:it[0],p:it[1],d:it[2],ex:c[2]})-1;
+ return `<div class="card"><div class="ph">${it[3]?`<img src="${it[3]}" alt="">`:c[1]}</div><div class="cb"><b>${it[0]}</b>${it[2]?`<small>${it[2]}</small>`:''}${c[2]?'<small>إضافات متاحة</small>':''}<div class="bt"><span class="pr">${P(it[1])}</span><button class="add" onclick="pick(${id})">+ أضف</button></div></div></div>`}).join('')+'</div>').join('');
+
+const key=(id,ex)=>id+':'+ex.join(',');
+const unit=l=>flat[l.id].p+l.ex.reduce((s,e)=>s+EX[flat[l.id].ex][e][1],0);
+const total=()=>cart.reduce((s,l)=>s+unit(l)*l.q,0);
+const count=()=>cart.reduce((s,l)=>s+l.q,0);
+function put(id,ex,q){const k=key(id,ex),f=cart.find(l=>key(l.id,l.ex)===k);f?f.q+=q:cart.push({id,ex,q});upd()}
+function pick(id){
+ const it=flat[id];
+ if(!it.ex){put(id,[],1);return}
+ $('box').innerHTML=`<h2 style="margin-top:0">${it.n}</h2><p class="note">${P(it.p)}</p><b>الإضافات:</b>`+EX[it.ex].map((e,i)=>`<div class="row"><label><input type="checkbox" class="exc" value="${i}">${e[0]}</label><span>+${P(e[1])}</span></div>`).join('')+
+ `<p><button class="btn" style="width:100%;padding:12px" onclick="addSel(${id})">أضف للسلة</button></p>`;
+ $('mod').classList.add('on')}
+function addSel(id){const ex=[...document.querySelectorAll('.exc:checked')].map(c=>+c.value);put(id,ex,1);$('mod').classList.remove('on')}
+function chg(i,d){cart[i].q+=d;if(cart[i].q<=0)cart.splice(i,1);upd();openCart()}
+function upd(){const n=count();$('bar').style.display=n?'flex':'none';$('bc').textContent='🛒 '+n+' صنف';$('bt').textContent=P(total())}
+function openCart(){
+ const rows=cart.map((l,i)=>`<div class="row"><span>${flat[l.id].n}${l.ex.length?`<small>+ ${l.ex.map(e=>EX[flat[l.id].ex][e][0]).join('، ')}</small>`:''}</span><span class="qty"><button onclick="chg(${i},-1)">−</button> ${l.q} <button onclick="chg(${i},1)">+</button></span><b>${unit(l)*l.q}</b></div>`).join('');
+ $('box').innerHTML=`<h2 style="margin-top:0">سلة الطلب</h2>${rows||'<p>السلة فارغة</p>'}
+ ${rows?`<p style="font-size:18px">الإجمالي: <b class="pr">${P(total())}</b></p>
+ <input id="fn" placeholder="الاسم" autocomplete="name"><input id="fp" type="tel" inputmode="tel" placeholder="رقم الجوال" autocomplete="tel">
+ <select id="ft"><option>استلام من المطعم</option><option>توصيل</option></select>
+ <textarea id="fa" rows="2" placeholder="العنوان (للتوصيل) / ملاحظات"></textarea>
+ <button class="btn" style="width:100%;padding:12px" onclick="send()">إرسال الطلب عبر واتساب</button>`:''}`;
+ $('mod').classList.add('on')}
+function send(){
+ const name=$('fn').value.trim(),phone=$('fp').value.trim();
+ if(!name||phone.replace(/\D/g,'').length<8){alert('من فضلك اكتب الاسم ورقم الجوال');return}
+ const lines=cart.map(l=>'• '+flat[l.id].n+(l.ex.length?' (+ '+l.ex.map(e=>EX[flat[l.id].ex][e][0]).join('، ')+')':'')+' × '+l.q+' = '+unit(l)*l.q);
+ const a=$('fa').value.trim();
+ const msg='طلب جديد من موقع تيلا الشام\n\n'+lines.join('\n')+'\n\nالإجمالي: '+P(total())+'\nالاسم: '+name+'\nالجوال: '+phone+'\nالنوع: '+$('ft').value+(a?'\nالعنوان/ملاحظات: '+a:'');
+ window.open('https://wa.me/'+CFG.wa+'?text='+encodeURIComponent(msg),'_blank');
+ cart=[];upd();
+ $('box').innerHTML='<h2 style="margin-top:0" class="ok">✅ تقريباً انتهينا!</h2><p>اضغط «إرسال» في واتساب ليصل الطلب للمطعم.</p><button class="btn" onclick="$(\'mod\').classList.remove(\'on\')">تم</button>';
+}
+// تمييز التبويب الحالي
+const secs=MENU.map((_,i)=>$('c'+i)),tb=[...$('tabs').children];
+addEventListener('scroll',()=>{let a=0;secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<140)a=i});tb.forEach((b,i)=>b.classList.toggle('on',i===a))},{passive:true});
+</script>
+</body>
+</html>
